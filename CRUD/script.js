@@ -26,17 +26,16 @@ loadItens()
 function insertItem(item, index){
     let tr = document.createElement("tr")
 
-    tr.innerHTML = `
-        <td>${item.nome}</td>
-        <td>${item.funcao}</td>
-        <td>R$ ${item.salario}</td>
-        <td class = "acao"><button onclick = "editItem(${index})"><i>class = "bx bx-edit"</i></button>/td>
-        <td class = "acao"><button onclick = "deleteItem(${index})"><i>class = "bx bx-trash"</i></button>/td>
-    `
+    tr.innerHTML = `<td>${item.nome}</td>
+    <td>${item.funcao}</td>
+    <td>R$ ${item.salario}</td>
+    <td class="acao"><button onclick="editItem(${index})"><i class="bx bx-edit"></i></button></td>
+    <td class="acao"><button onclick="deleteItem(${index})"><i class="bx bx-trash"></i></button></td>`
     tbody.appendChild(tr)
 }
 
 function editItem(index){
+    id = index
     openModal(true, index)
 }
 
@@ -68,7 +67,23 @@ function openModal(edit = false, index = 0){
 }
 
 btnSalvar.onclick = e =>{
-    if(sNOme.value == "" || sFuncao.value == "" || sSalario.value == ""){
+    if(sNome.value == "" || sFuncao.value == "" || sSalario.value == ""){
         return
     }
+
+    e.preventDefault()
+
+    if(id != undefined){
+        itens[id].nome = sNome.value
+        itens[id].funcao = sFuncao.value
+        itens[id].salario = sSalario.value
+    }else{
+        itens.push({"nome" : sNome.value, "funcao" : sFuncao.value, "salario" : sSalario.value})
+    }
+
+    setItensBD()
+
+    modal.classList.remove("active")
+    loadItens()
+    id = undefined
 }
