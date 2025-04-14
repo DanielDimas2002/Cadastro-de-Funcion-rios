@@ -79,6 +79,6 @@ Esse projeto ajuda a praticar:
 
 ## 🧑‍💻 Autor
 
-Feito por [Seu Nome Aqui]  
+Feito por [Daniel Dimas de Souza]  
 📎 Vídeo: [https://youtu.be/m-enmV7exqg](https://youtu.be/m-enmV7exqg)
 
